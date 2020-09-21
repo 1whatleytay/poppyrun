@@ -1,0 +1,328 @@
+{
+  "code": [
+    {
+      "code": [
+        {
+          "destination": "command",
+          "source": {
+            "type": "input"
+          },
+          "type": "assign"
+        },
+        {
+          "branches": [
+            {
+              "code": [
+                {
+                  "source": {
+                    "content": "Give yourself a cool nickname!",
+                    "type": "string"
+                  },
+                  "type": "say"
+                },
+                {
+                  "destination": "fighter",
+                  "source": {
+                    "type": "input"
+                  },
+                  "type": "assign"
+                },
+                {
+                  "source": {
+                    "content": "Who would you like to fight?",
+                    "type": "string"
+                  },
+                  "type": "say"
+                },
+                {
+                  "destination": "opponent",
+                  "source": {
+                    "type": "input"
+                  },
+                  "type": "assign"
+                },
+                {
+                  "destination": "hp1",
+                  "source": {
+                    "content": 50.0,
+                    "type": "number"
+                  },
+                  "type": "assign"
+                },
+                {
+                  "destination": "hp2",
+                  "source": {
+                    "content": 50.0,
+                    "type": "number"
+                  },
+                  "type": "assign"
+                },
+                {
+                  "destination": "damage1",
+                  "source": {
+                    "content": 12.0,
+                    "type": "number"
+                  },
+                  "type": "assign"
+                },
+                {
+                  "destination": "damage2",
+                  "source": {
+                    "content": 12.0,
+                    "type": "number"
+                  },
+                  "type": "assign"
+                },
+                {
+                  "source": {
+                    "content": "Let the fighting begin!",
+                    "type": "string"
+                  },
+                  "type": "say"
+                },
+                {
+                  "code": [
+                    {
+                      "destination": "damage1",
+                      "source": {
+                        "a": {
+                          "content": "damage1",
+                          "type": "variable"
+                        },
+                        "b": {
+                          "a": {
+                            "content": {
+                              "content": 4.0,
+                              "type": "number"
+                            },
+                            "type": "random"
+                          },
+                          "b": {
+                            "content": 2.0,
+                            "type": "number"
+                          },
+                          "type": "-"
+                        },
+                        "type": "+"
+                      },
+                      "type": "assign"
+                    },
+                    {
+                      "destination": "damage2",
+                      "source": {
+                        "a": {
+                          "content": "damage2",
+                          "type": "variable"
+                        },
+                        "b": {
+                          "a": {
+                            "content": {
+                              "content": 4.0,
+                              "type": "number"
+                            },
+                            "type": "random"
+                          },
+                          "b": {
+                            "content": 2.0,
+                            "type": "number"
+                          },
+                          "type": "-"
+                        },
+                        "type": "+"
+                      },
+                      "type": "assign"
+                    },
+                    {
+                      "source": {
+                        "content": 500.0,
+                        "type": "number"
+                      },
+                      "type": "delay"
+                    },
+                    {
+                      "source": {
+                        "content": [
+                          {
+                            "content": "fighter",
+                            "type": "variable"
+                          },
+                          {
+                            "content": " attacks for ",
+                            "type": "string"
+                          },
+                          {
+                            "content": "damage1",
+                            "type": "variable"
+                          },
+                          {
+                            "content": " damage!",
+                            "type": "string"
+                          }
+                        ],
+                        "type": "concat"
+                      },
+                      "type": "say"
+                    },
+                    {
+                      "destination": "hp2",
+                      "source": {
+                        "a": {
+                          "content": "hp2",
+                          "type": "variable"
+                        },
+                        "b": {
+                          "content": "damage1",
+                          "type": "variable"
+                        },
+                        "type": "-"
+                      },
+                      "type": "assign"
+                    },
+                    {
+                      "source": {
+                        "content": 500.0,
+                        "type": "number"
+                      },
+                      "type": "delay"
+                    },
+                    {
+                      "source": {
+                        "content": [
+                          {
+                            "content": "opponent",
+                            "type": "variable"
+                          },
+                          {
+                            "content": " attacks for ",
+                            "type": "string"
+                          },
+                          {
+                            "content": "damage2",
+                            "type": "variable"
+                          },
+                          {
+                            "content": " damage!",
+                            "type": "string"
+                          }
+                        ],
+                        "type": "concat"
+                      },
+                      "type": "say"
+                    },
+                    {
+                      "destination": "hp1",
+                      "source": {
+                        "a": {
+                          "content": "hp1",
+                          "type": "variable"
+                        },
+                        "b": {
+                          "content": "damage2",
+                          "type": "variable"
+                        },
+                        "type": "-"
+                      },
+                      "type": "assign"
+                    },
+                    {
+                      "branches": [
+                        {
+                          "code": [
+                            {
+                              "source": {
+                                "content": [
+                                  {
+                                    "content": "opponent",
+                                    "type": "variable"
+                                  },
+                                  {
+                                    "content": " is the victor!",
+                                    "type": "string"
+                                  }
+                                ],
+                                "type": "concat"
+                              },
+                              "type": "say"
+                            },
+                            {
+                              "type": "break"
+                            }
+                          ],
+                          "source": {
+                            "a": {
+                              "content": "hp1",
+                              "type": "variable"
+                            },
+                            "b": {
+                              "content": 0.0,
+                              "type": "number"
+                            },
+                            "type": "<="
+                          }
+                        }
+                      ],
+                      "type": "if"
+                    },
+                    {
+                      "branches": [
+                        {
+                          "code": [
+                            {
+                              "source": {
+                                "content": [
+                                  {
+                                    "content": "fighter",
+                                    "type": "variable"
+                                  },
+                                  {
+                                    "content": " is the victor!",
+                                    "type": "string"
+                                  }
+                                ],
+                                "type": "concat"
+                              },
+                              "type": "say"
+                            },
+                            {
+                              "type": "break"
+                            }
+                          ],
+                          "source": {
+                            "a": {
+                              "content": "hp2",
+                              "type": "variable"
+                            },
+                            "b": {
+                              "content": 0.0,
+                              "type": "number"
+                            },
+                            "type": "<="
+                          }
+                        }
+                      ],
+                      "type": "if"
+                    }
+                  ],
+                  "type": "loop"
+                }
+              ],
+              "source": {
+                "a": {
+                  "content": "command",
+                  "type": "variable"
+                },
+                "b": {
+                  "content": "fight",
+                  "type": "string"
+                },
+                "type": "is"
+              }
+            }
+          ],
+          "type": "if"
+        }
+      ],
+      "type": "loop"
+    }
+  ]
+}

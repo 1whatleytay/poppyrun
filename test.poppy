@@ -1,0 +1,41 @@
+loop {
+	command = input()
+
+	if command == 'fight' {
+		say('Give yourself a cool nickname!')
+		fighter = input()
+		say('Who would you like to fight?')
+		opponent = input()
+
+		hp1 = 50
+		hp2 = 50
+
+		damage1 = 12
+		damage2 = 12
+
+		say('Let the fighting begin!')
+
+		loop {
+			damage1 += random(4) - 2
+			damage2 += random(4) - 2
+
+			delay(500)
+			say('\(fighter) attacks for \(damage1) damage!')
+			hp2 -= damage1
+
+			delay(500)
+			say('\(opponent) attacks for \(damage2) damage!')
+			hp1 -= damage2
+
+			if hp1 <= 0 {
+				say('\(opponent) is the victor!')
+				break
+			}
+
+			if hp2 <= 0 {
+				say('\(fighter) is the victor!')
+				break
+			}
+		}
+	}
+}
